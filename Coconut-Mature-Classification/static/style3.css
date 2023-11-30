@@ -1,0 +1,186 @@
+body {
+    overflow: hidden;
+  }
+  
+  .upload {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+    position: relative;
+    gap: 15px;
+  }
+  
+  #drop-area {
+    width: 700px;
+    height: 350px;
+    padding: 30px;
+    background: #fff;
+    text-align: center;
+    border-radius: 20px;
+  }
+  
+  #img-view {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border: 2px dashed #bbb5ff;
+    background: #f7f8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+  }
+  
+  #img-view img {
+    max-width: 150%;
+    max-height: 150%;
+    object-fit: contain;
+  }
+  
+  #img-view span {
+    display: block;
+    font-size: 12px;
+    color: #777;
+    margin-top: 15px;
+  }
+  
+  #camera-container {
+    display: none; /* Initially hide the camera container */
+    width: 700px; /* Set the desired width for the camera container */
+    height: 350px; /* Set the desired height for the camera container */
+    border-radius: 20px;
+    border: 2px ;
+    background: #f7f8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 0;
+    overflow: hidden;
+    position: relative;
+    margin-top: -110px;
+}
+
+#camera-view{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+#captured-photo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.camera-button {
+  z-index: 2;
+  padding: 10px 20px; /* Tùy chỉnh kích thước và khoảng cách bên trong */
+  background-color: #3498db; /* Màu nền */
+  color: #fff; /* Màu chữ */
+  border: none; /* Loại bỏ đường viền */
+  border-radius: 5px; /* Bo tròn góc */
+  cursor: pointer; /* Biến con trỏ thành bàn tay khi di chuột qua */
+  width: 120px; /* Set a fixed width for the button */
+  text-align: center; /* Center the text horizontally */
+  margin-top: 10px;
+}
+
+/* Hover state để tạo hiệu ứng khi di chuột qua */
+.camera-button:hover {
+  background-color: #2980b9;
+}
+
+
+
+.predict-button {
+  z-index: 2;
+  padding: 10px 20px;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Hover state for the predict-button */
+.predict-button:hover {
+  background-color: #c0392b;
+}
+.custom-camera-button {
+  margin-top: 10px;
+  z-index: 2;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Hover state for the custom-camera-button */
+.custom-camera-button:hover {
+  background-color: #2980b9;
+}
+
+#result{
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px; /* Khoảng cách trên */
+}
+
+.coconut-result {
+  z-index: 2;
+  padding: 10px 20px;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #FF8C00;
+  border: none;
+  border-radius: 5px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.hello-text {
+  text-align: center;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-radius: 6px;
+  font-size: 1.1em;
+  color: white;
+}
+
+/* Điều chỉnh cho màn hình nhỏ hơn (điện thoại di động) */
+@media (max-width: 767px) {
+  #drop-area {
+      max-width: 100%; /* Ví dụ, full width cho màn hình nhỏ hơn */
+      padding: 10px; /* Điều chỉnh khoảng trắng cho màn hình nhỏ */
+      margin-top: -30px; /* Điều chỉnh khoảng cách trên màn hình nhỏ */
+  }
+
+  #camera-container {
+    max-width: 100%; /* Ví dụ, full width cho màn hình nhỏ hơn */
+    padding: 10px; /* Điều chỉnh khoảng trắng cho màn hình nhỏ */
+    margin-top: -30px; /* Điều chỉnh khoảng cách trên màn hình nhỏ */
+  }
+
+  #result, .coconut-result {
+      bottom: 10px; /* Điều chỉnh vị trí cho màn hình nhỏ */
+  }
+}
+
+
+
+  

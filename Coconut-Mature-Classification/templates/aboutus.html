@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin về nhóm</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='products.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="/"><img src="{{ url_for('static', filename='logo.png') }}" class="logo"></a>
+        <div class="menu-btn"></div>
+        <div class="navigation">
+            <div class="navigation-items">
+                <a href="/">Trang Chủ</a>
+                <a href="/products">Sản Phẩm</a>
+                <a href="/aboutus">Nhóm Phát Triển</a>
+                {% if 'email' in session %}
+                <div class="user-info">
+                    <button class="btnLogin-popup" id="logoutButton">Đăng Xuất</button>
+                    <h2 class="hello-text">Hello {{session['username']}}</h2>
+                </div>
+                {% else %}
+                  <button class="btnLogin-popup" onclick="window.location.href = '/login'">Đăng Nhập</button>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    <section class="home">
+        <div class="card-container">
+            <!-- Card for Team Member 1 -->
+            <div class="card">
+                <div class="card__img">
+                    <img src="{{ url_for('static', filename='Hung.jpg') }}" alt="">
+                </div>
+                <h2>Phạm Quốc Hùng</h2>
+                <p>QE170078</p>
+                <div class="card__social">
+                    <a href="https://www.facebook.com/hungpham003" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://github.com/Hungpham03">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card__img"> 
+                    <img src="{{ url_for('static', filename='Huu.jpg') }}" alt="">
+                </div>
+                <h2>Mai Xuân Hữu</h2>
+                <p>QE170004</p>
+                <div class="card__social">
+                    <a href="https://www.facebook.com/xuanhuu.mai.52" target="blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://github.com/MaiXuanHuu">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card__img">
+                    <img src="{{ url_for('static', filename='Dong.jpg') }}" alt="">
+                </div>
+                <h2>Diệp Gia Đông</h2>
+                <p>QE170049</p>
+                <div class="card__social">
+                    <a href="https://www.facebook.com/dong.diep3954" target="blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://github.com/DiepDong">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        
+
+            <div class="card">
+                <div class="card__img">
+                    <img src="{{ url_for('static', filename='Trung.jpg') }}" alt="">
+                </div>
+                <h2>Phan Quốc Trung</h2>
+                <p>QE170085</p>
+                <div class="card__social">
+                    <a href="https://www.facebook.com/phan.william.50" target="blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://github.com/PhanQuocTrung18">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card__img">
+                    <img src="{{ url_for('static', filename='Tien.jpg') }}" alt="">
+                </div>
+                <h2>Trương Trọng Tiến</h2>
+                <p>QE170069</p>
+                <div class="card__social">
+                    <a href="https://www.facebook.com/truongtrongtien2003" target="blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://github.com/TruongTrongTien">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+        </div>
+    </section>   
+</body>
+<script type="text/javascript">
+    // JavaScript for the responsive navigation menu
+    const menuBtn = document.querySelector(".menu-btn");
+    const navigation = document.querySelector(".navigation");
+    menuBtn.addEventListener("click", () => {
+        menuBtn.classList.toggle("active");
+        navigation.classList.toggle("active");
+    });
+    // JavaScript for video slider navigation
+    const btns = document.querySelectorAll(".nav-btn");
+    const slides = document.querySelectorAll(".video-slide");
+
+    var sliderNav = function (manual) {
+        btns.forEach((btn) => {
+            btn.classList.remove("active");
+        });
+
+        slides.forEach((slide) => {
+            slide.classList.remove("active");
+        });
+        btns[manual].classList.add("active");
+        slides[manual].classList.add("active");
+    };
+    btns.forEach((btn, i) => {
+        btn.addEventListener("click", () => {
+            sliderNav(i);
+        });
+    });
+
+
+    const logoutButton = document.getElementById("logoutButton");
+
+        logoutButton.addEventListener("click", () => {
+        window.location.href = '/logout'; // Gửi yêu cầu GET đến '/logout'
+    });
+</script>
+</html>

@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/* header
+{
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 150px;
+    transition: 0.5s ease;    
+}
+
+header .logo
+{
+    position: relative;
+    max-width: 100px;    
+}
+header .navigation
+{
+    position: relative;   
+}
+
+.navigation-items 
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+header .navigation .navigation-items a
+{
+    position: relative;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 30px;
+    transition: 0.3s ease;
+}
+header .navigation .navigation-items a:before
+{
+    content: '';
+    position: absolute;
+    background: #fff;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    transition: 0.3 ease;
+}
+header .navigation .navigation-items a:hover:before
+{
+    width: 100%;
+} */
+header
+{
+    margin-top: 15px;
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    align-items: center;
+    transition: 0.5s ease;    
+}
+header .logo
+{
+    position: relative;
+    max-width: 100px;    
+}
+.mota {
+    position: relative;
+    height: 150px;
+    width: 150px;
+}
+
+header .navigation .navigation-items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
+header .navigation .navigation-items a
+{
+    position: relative;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+header .navigation .navigation-items a:before
+{
+    content: '';
+    position: absolute;
+    background: #fff;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    transition: 0.3 ease;
+}
+
+header .navigation .navigation-items a:hover:before
+{
+    width: 100%;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .hello-text {
+    text-align: center;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 6px;
+    font-size: 1.1em;
+    color: white;
+  }
+
+
+section
+{
+    padding: 100px 200px;    
+}
+.home
+{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: #006400;
+}
+
+.home .content
+{
+    z-index: 888;
+    color: #fff;
+    width: 70%;
+    margin-top: 50px;
+}
+.home .content h1
+{
+    font-size: 3em;
+    font-weight: 900;
+    text-transform: 900;
+    letter-spacing: 5px;
+    line-height: 60px;
+    margin-bottom: 40px;    
+}
+.home .content p
+{
+    text-align: justify;
+    margin-bottom: 65px;
+}
+/* Thêm vào nội dung sau thẻ head hoặc style.css */
+.details-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+  }
+  .details-link {
+    color: #1680AC; /* Thay đổi màu chữ tùy ý */
+    cursor: pointer; /* Để chỉ rõ là nút có thể nhấp được */
+}
+
+.details-content p{
+    color: #fff;
+    text-align: justify;
+}
+  .details-content {
+    background: rgba(0,0,0,0); /* 0.8 ở đây là độ trong suốt, giá trị từ 0 (hoàn toàn trong suốt) đến 1 (hoàn toàn không trong suốt) */
+    padding: 20px;
+    max-width: 600px;
+    text-align: center;
+    border-radius: 8px;
+  }
+  
+  .close-btn {
+    cursor: pointer;
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+.home .content a
+{
+    background: #fff;
+    padding: 15px 35px;
+    color: #1680AC;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 2px;
+}
+.home .media-icons
+{
+    z-index: 888;
+    position: absolute;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5 ease;
+}
+.home .media-icons a
+{
+    color: #fff;
+    font-size: 1.6em;  
+}
+.home .media-icons a:not(:last-child)
+{
+    margin-bottom: 20px;
+}
+.home .media-icons a:hover
+{
+    transform: scale(1.3);
+}
+.home video{
+    z-index: 000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.slider-navigation{
+    z-index: 888;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(80px);
+    margin-bottom: 12px;
+}
+.slider-navigation .nav-btn{
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+    transition: 0.3s ease;
+}
+.slider-navigation .nav-btn.active{
+    background: #006400;
+}
+.slider-navigation .nav-btn:not(:last-child){
+    margin-right: 20px;
+}
+.slider-navigation .nav-btn:hover{
+    transform: scale(1.2);
+}
+.video-slide{
+    position: absolute;
+    width: 100%;
+    clip-path: circle(0% at 0 50%);
+}
+.video-slide.active{
+    clip-path: circle(150% at 0 50%);
+    transition: 2s ease;
+    transition-property: clip-path;
+}
+@media (max-width: 1040px) {
+  header {
+    padding: 10px 20px;
+  }
+  section {
+    padding: 100px 20px;
+  }
+  .home .media-icons {
+    right: 15px;
+  }
+  header .navigation {
+    display: none;
+  }
+  header .navigation.active {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(1, 1, 1, 0.5);
+  }
+  header .navigation .navigation-items a {
+    position: relative;
+    color: #222;
+    font-size: 1.2em;
+    margin: 20px;
+  }
+  header .navigation .navigation-items a:before {
+    background: #222;
+    height: 5px;
+  }
+  header .navigation.active .navigation-items {
+    background: rgba(255, 255, 255, 0.5);
+    width: 600px;
+    max-width: 600px;
+    margin: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 5px 25px rgba(1, 1, 1, 0.2);
+  }
+  .menu-btn {
+    background: url(menu.png) no-repeat;
+    background-size: 30px;
+    background-position: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  .menu-btn.active {
+    z-index: 999;
+    background: url(close.png) no-repeat;
+    background-size: 25px;
+    background-position: center;
+    transition: 0.3s ease;
+  }
+}
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Phân loại chất lượng dừa(non, nạo, khô)</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    </head>
+    <body>
+      <header>
+        <a href="/"><img src="{{ url_for('static', filename='logo.png') }}" class="logo"></a>
+        <div class="menu-btn"></div>
+        <div class="navigation" id="Navigation">
+            <div class="navigation-items">
+                <a href="/">Trang Chủ</a>
+                <a href="/products">Sản Phẩm</a>
+                <a href="/aboutus">Nhóm Phát Triển</a>
+                {% if 'email' in session %}
+                <div class="user-info">
+                    <button class="btnLogin-popup" id="logoutButton">Đăng Xuất</button>
+                    <h2 class = "hello-text" >Hello {{session['username']}}</h2>
+                </div>
+                {% else %}
+                  <button class="btnLogin-popup" onclick="window.location.href = '/login'">Đăng Nhập</button>
+                {% endif %}
+            </div>
+        </div>
+      </header>
+      <section class="home">
+        <video class="video-slide active" src="{{ url_for('static', filename='video1.lf') }}" autoplay muted loop></video>
+        <video class="video-slide" src="{{ url_for('static', filename='video2.lf') }}" autoplay muted loop></video>
+        <video class="video-slide" src="{{ url_for('static', filename='video3.lf') }}" autoplay muted loop></video>
+        <video class="video-slide" src="{{ url_for('static', filename='video4.lf') }}" autoplay muted loop></video>
+        <div class="content content-overlay">
+            <h1>COCONUT MATURITY CLASSIFICATION<br></h1>
+            <p>Phân loại độ chín của dừa (non, nạo, khô) là quá trình xác định và tách biệt các loại dừa dựa trên độ tuổi và mức độ chín của quả dừa. Điều này có thể thực hiện bằng cách sử dụng mắt thường hoặc các phương pháp công nghệ hơn để giúp trong việc phân loại dừa.
+            <span class="details-link" id="detailsLink">Chi tiết</span>
+            </p>
+            <a href="/products">Xem Sản Phẩm</a>
+        </div>
+        <div class="details-overlay" id="detailsOverlay">
+          <div class="details-content">
+              <!-- Nội dung giới thiệu về dự án -->
+              <p>Dừa non: dừa màu xanh trong, da dừa láng, bóng, đầu mào dừa chưa tóm lại, còn to</p>
+              <img src="{{ url_for('static', filename='non.jpg') }} " class="mota" alt="Mô tả ảnh">
+              <p>Dừa nạo:  da dừa còn bóng nhưng nó ít hơn dừa non, đầu mào dừa bắt đầu tóm lại, đục hơn dừa non</p>
+              <img src="{{ url_for('static', filename='nao.jpg') }} " class="mota" alt="Mô tả ảnh">
+              <p>Dừa già: đầu mào dừa tóm lại, màu da xanh đậm (sau này thành nâu, vàng,...), da dừa không còn bóng mà trở nên khằn (sờ vào không mịn  như dừa non mà cứng)</p>
+              <img src="{{ url_for('static', filename='gia.jpg') }} " class="mota" alt="Mô tả ảnh">
+              <div class="close-btn" onclick="closeDetails()">Đóng</div>
+          </div>
+        </div>
+        <div class="media-icons" id="mediaicon">
+            <a href="https://github.com/TruongTrongTien/Coconut-Mature-Classification"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://github.com/TruongTrongTien/Coconut-Mature-Classification"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/TruongTrongTien/Coconut-Mature-Classification"><i class="fab fa-github"></i></a>
+        </div>
+        <div class="slider-navigation" id="sliderNavigation">
+          <div class="nav-btn active"></div>
+          <div class="nav-btn"></div>
+          <div class="nav-btn"></div>
+          <div class="nav-btn"></div>
+        </div>
+      </section>
+      <script type="text/javascript">
+        // JavaScript cho menu điều hướng phản hồi
+        const menuBtn = document.querySelector(".menu-btn");
+        const navigation = document.querySelector(".navigation");
+        menuBtn.addEventListener("click", () => {
+          menuBtn.classList.toggle("active");
+          navigation.classList.toggle("active");
+        });
+        // JavaScript cho điều hướng video slider
+        const btns = document.querySelectorAll(".nav-btn");
+        const slides = document.querySelectorAll(".video-slide");
+
+        var sliderNav = function(manual) {
+          btns.forEach((btn) => {
+            btn.classList.remove("active");
+          });
+
+          slides.forEach((slide) => {
+            slide.classList.remove("active");
+          });
+          btns[manual].classList.add("active");
+          slides[manual].classList.add("active");
+        };
+        btns.forEach((btn, i) => {
+          btn.addEventListener("click", () => {
+            sliderNav(i);
+          });
+        });
+
+
+        const logoutButton = document.getElementById("logoutButton");
+
+        logoutButton.addEventListener("click", () => {
+        window.location.href = '/logout'; // Gửi yêu cầu GET đến '/logout'
+    });
+  </script>
+    <script>
+    // Thêm vào sau đoạn mã JavaScript hiện tại
+    const detailsLink = document.getElementById("detailsLink");
+    const detailsOverlay = document.getElementById("detailsOverlay");
+    const contentOverlay = document.querySelector(".content-overlay");
+    const sliderNavigation = document.getElementById("sliderNavigation"); // Thêm thanh slider-navigation vào
+    const aNavigation = document.getElementById("Navigation");
+    const mediaicon = document.getElementById("mediaicon");
+
+    detailsLink.addEventListener("click", () => {
+      detailsOverlay.style.display = "flex";
+      contentOverlay.style.display = "none";
+      sliderNavigation.style.display = "none"; // Ẩn thanh slider-navigation khi hiển thị chi tiết
+      aNavigation.style.display = "none";
+      mediaicon.style.display = "none";
+    });
+
+    function closeDetails() {
+      detailsOverlay.style.display = "none";
+      contentOverlay.style.display = "block";
+      sliderNavigation.style.display = "flex"; // Hiển thị lại thanh slider-navigation khi đóng chi tiết
+      aNavigation.style.display = "flex";
+      mediaicon.style.display = "flex";
+}
+
+
+      </script>
+    </body>
+</html>

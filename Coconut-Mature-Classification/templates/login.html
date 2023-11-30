@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='products.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="/"><img src="{{ url_for('static', filename='logo.png') }}" class="logo"></a>
+        <div class="menu-btn"></div>
+        <div class="navigation">
+            <div class="navigation-items">
+                <a href="/">Trang Chủ</a>
+                <a href="/products">Sản Phẩm</a>
+                <a href="/aboutus">Nhóm Phát Triển</a>
+                <button class="btnLogin-popup" onclick="window.location.href = '/login'">Đăng Nhập</button>
+            </div>
+        </div>
+    </header>
+    <section class="home">
+        <div class="wrapper {% if isRegisterShown %}active{% endif %} active-popup"> <!-- Chú ý đến lớp active-popup -->
+            <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+            <div class="form-box login">
+                <h2>Đăng nhập</h2>
+                <form action="/login" method="POST">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" name="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" name="password" required>
+                        <label>Mật khẩu</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">Ghi nhớ tài khoản</label>
+                        <a href="#">Quên mật khẩu</a>
+                    </div>
+                    <button type="submit" class="btn">Đăng nhập</button>
+                    <div class= "login-register">
+                        <p>Không có tài khoản? <a href="#" class="register-link">Đăng ký</a></p>
+                    </div>
+                    {% if mess %}
+                    <div id="mess">{{ mess }}</div>
+                    {% endif %}  
+                </form>
+            </div>
+            
+            
+            <div class="form-box register">
+                <h2>Đăng ký</h2>
+                <form action="/register" method="POST">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="person"></ion-icon></span>
+                        <input type="text" name="username" required>
+                        <label>Tên người dùng</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" name="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" name="password" required>
+                        <label>Mật khẩu</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox" required>Tôi đồng ý với các điều khoản và điều kiện</label>
+                    </div>
+                    <button type="submit" class="btn">Đăng ký</button>
+                    <div class="login-register">
+                        <p>Đã có tài khoản: <a href="#" class="login-link">Đăng nhập</a></p>
+                    </div> 
+                    {% if message %}
+                    <div id="message">{{ message }}</div>
+                    {% endif %}     
+                </form>
+            </div> 
+        </div>
+    </section>
+    <script type="text/javascript">
+        // JavaScript for the responsive navigation menu
+        const menuBtn = document.querySelector(".menu-btn");
+        const navigation = document.querySelector(".navigation");
+        menuBtn.addEventListener("click", () => {
+            menuBtn.classList.toggle("active");
+            navigation.classList.toggle("active");
+        });
+        // JavaScript for video slider navigation
+        const btns = document.querySelectorAll(".nav-btn");
+        const slides = document.querySelectorAll(".video-slide");
+
+        var sliderNav = function (manual) {
+            btns.forEach((btn) => {
+                btn.classList.remove("active");
+            });
+
+            slides.forEach((slide) => {
+                slide.classList.remove("active");
+            });
+            btns[manual].classList.add("active");
+            slides[manual].classList.add("active");
+        };
+        btns.forEach((btn, i) => {
+            btn.addEventListener("click", () => {
+                sliderNav(i);
+            });
+        });
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</body>
+</html>

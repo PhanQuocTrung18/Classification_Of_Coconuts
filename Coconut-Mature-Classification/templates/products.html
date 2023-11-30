@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phân loại chất lượng dừa (non, nạo, khô)</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style3.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='products.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <a href="/"><img src="{{ url_for('static', filename='logo.png') }}" class="logo"></a>
+    <div class="menu-btn"></div>
+    <div class="navigation">
+        <div class="navigation-items">
+            <a href="/">Trang Chủ</a>
+            <a href="/products">Sản Phẩm</a>
+            <a href="/aboutus">Nhóm Phát Triển</a>
+            {% if 'email' in session %}
+            <div class="user-info">
+                <button class="btnLogin-popup" id="logoutButton">Đăng Xuất</button>
+                <h2 class="hello-text">Hello {{session['username']}}</h2>
+            </div>
+            {% else %}
+            <button class="btnLogin-popup" onclick="window.location.href = '/login'">Đăng Nhập</button>
+            {% endif %}
+        </div>
+    </div>
+  </header>
+  <section class="home">
+    <form method="post" action="/products" enctype="multipart/form-data">
+      <div class="upload">
+        <label for="input-file" id="drop-area">
+          <input type="file" accept="image/*" name="file" id="input-file" hidden>
+          <div id="img-view">
+            {% if captured_image_data %}
+            <img id="uploaded-image" src="{{ captured_image_data }}">
+            {% else %}
+            <img id="uploaded-image" src="{{ url_for('static', filename='iconupload.png') }}">
+            <p>Kéo và thả hoặc bấm vào đây<br>để tải ảnh lên</p>
+            {% endif %}
+          </div>
+      </div>
+      <div id="camera-container" style="display: none;">
+        <video id="camera-view" autoplay="" muted=""></video>
+        <img id="captured-photo" alt="Ảnh đã chụp" style="display: none;">
+      </div>
+        </label>
+        {% if class_name %}
+        <div id="result" class="coconut-result">
+          Kết quả dự đoán: {{ class_name }}<br>
+          Độ tin cậy: {{ "{:.2%}".format(class_score) }}
+        </div>
+        {% endif %}
+        <div class="predict-camera-group">
+          <button id="toggle-camera" class="camera-button" type="button">Bật Camera</button>
+          <button id="toggle-upload" class="camera-button" style="display: none;" type="button">Tải ảnh</button>
+          <button id="take-photo" class="custom-camera-button" type="button">Chụp Ảnh</button>
+          <button id="predict-button" class="predict-button" name="predict" type="submit">Dự đoán</button>
+          </div>
+          <input type="hidden" id="captured-image-data" name="captured-image-data">
+      </div>
+    </form>
+  </section>
+
+  <script type="text/javascript">
+    // JavaScript cho thanh điều hướng phản hồi
+const menuBtn = document.querySelector(".menu-btn");
+const navigation = document.querySelector(".navigation");
+
+menuBtn.addEventListener("click", () => {
+  menuBtn.classList.toggle("active");
+  navigation.classList.toggle("active");
+});
+
+</script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule="" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="{{ url_for('static', filename='products.js') }}"></script> 
+</body>
+</html>
